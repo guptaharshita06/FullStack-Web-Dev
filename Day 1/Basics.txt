@@ -1,0 +1,101 @@
+ Day 1 Notes
+============================================
+
+Goal: Set up development environment and understand the basics of the MERN stack.
+
+-----------------------------------------------------
+🧠 BASICS - Version Control, GitHub, README, Terminal
+-----------------------------------------------------
+
+1. What is Git?
+- Git is a version control system.
+- It tracks all changes in your code.
+- You can go back to an older version if something breaks.
+
+2. What is GitHub?
+- GitHub is a website to store and share code online.
+- It helps you work with a team using Git.
+
+3. What is Version Control?
+- A system to keep track of code changes.
+- Allows multiple people to work on the same project.
+
+4. What is a README.md file?
+- A special file that describes your project.
+- It is written in Markdown language.
+- It usually contains:
+  - Project name
+  - Description
+  - Features
+  - Technologies used
+  - How to install/run
+  - Screenshots or links (optional)
+
+5. What is Open Source?
+- Open source means the source code is public.
+- Anyone can use, modify, or contribute.
+- Examples: Linux, Firefox, React, Python.
+
+6. What is Terminal / CLI?
+- CLI = Command Line Interface
+- You type commands instead of clicking.
+- Common commands:
+  - cd (change directory)
+  - ls (list files)
+  - mkdir (make directory)
+  - touch file.txt (create file)
+  - git init, git add, git commit, git push (Git commands)
+
+7. Markdown Syntax (used in README files):
+  # Heading 1
+  ## Heading 2
+  **Bold Text**
+  *Italic Text*
+  - Bullet List
+  1. Numbered List
+  [Link](https://example.com)
+  ![Image](image-url)
+
+-----------------------------------------------------
+⚙️ DEVELOPMENT ENVIRONMENT SETUP & MERN BASICS
+-----------------------------------------------------
+
+1. Install Node.js and npm:
+- Node.js allows us to run JavaScript on the server (backend).
+- npm (Node Package Manager) helps us install libraries.
+- Download from: https://nodejs.org/
+
+2. Install MongoDB Community Edition:
+- MongoDB is a NoSQL database. It stores data in JSON format.
+- It is used to store the data of your app.
+- Download from: https://www.mongodb.com/try/download/community
+
+3. Install Visual Studio Code:
+- VS Code is a code editor to write your code.
+- It supports many languages and has great extensions.
+- Download from: https://code.visualstudio.com/
+
+4. Install Git and set up GitHub:
+- Git is installed from: https://git-scm.com/
+- Create GitHub account at: https://github.com/
+
+5. Practice Git Commands:
+- git init → start a new git repository
+- git add . → add all files to staging
+- git commit -m "message" → save snapshot with a message
+- git remote add origin <repo-url> → link with GitHub
+- git push -u origin main → upload code to GitHub
+
+6. Learn the MERN Stack:
+- M = MongoDB → stores data
+- E = Express.js → handles routes and APIs
+- R = React.js → builds the front-end (user interface)
+- N = Node.js → runs JavaScript backend code
+
+7. Install Postman:
+- Postman is used to test APIs (like login, register).
+- You can send GET, POST, PUT, DELETE requests.
+- Download from: https://www.postman.com/downloads
+
+-----------------------------------------------------
+✅ Day 1 Setup is Complete!
