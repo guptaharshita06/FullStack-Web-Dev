@@ -1,0 +1,68 @@
+ Day 2 Notes
+===============================
+
+Goal: Learn HTML, CSS, and understand Git & GitHub basics.
+
+----------------------------------------
+1. HTML (HyperText Markup Language)
+----------------------------------------
+- HTML is the base structure of any webpage.
+- We use tags to add text, images, links, buttons, and more.
+
+Common Tags:
+- <html>, <head>, <body>: Basic structure
+- <h1> to <h6>: Headings
+- <p>: Paragraph
+- <a>: Link
+- <img>: Image
+- <form>, <input>, <button>: Forms
+- <div>: Block container
+- <span>: Inline container
+
+Block vs Inline:
+- Block: takes full width (e.g., div, p)
+- Inline: takes only needed space (e.g., span, a)
+
+----------------------------------------
+2. CSS (Cascading Style Sheets)
+----------------------------------------
+- CSS is used to design and style HTML pages.
+
+Basic Concepts:
+- Selectors: Used to select elements
+- Class: Use with `.className`
+- ID: Use with `#idName`
+- Margin: Space outside the element
+- Padding: Space inside the element
+- Font styling: font-family, font-size, color
+
+----------------------------------------
+3. Git and GitHub
+----------------------------------------
+Git:
+- Git is a version control system to track changes in code.
+- We can go back to previous versions if needed.
+
+GitHub:
+- GitHub is an online platform to store and share code.
+- It helps in team collaboration.
+
+Basic Git Commands:
+- `git init` → Start a Git repository
+- `git add .` → Add all files
+- `git commit -m "message"` → Save changes
+- `git remote add origin <repo-url>` → Connect GitHub repo
+- `git push -u origin main` → Push code to GitHub
+
+Resources:
+- FreeCodeCamp HTML & CSS:  
+  https://www.youtube.com/watch?v=mU6anWqZJcc
+
+- Git & GitHub for Beginners:  
+  https://www.youtube.com/watch?v=apGV9Kg7ics
+
+----------------------------------------
+✅ Day 2 Task:
+- Created a profile web page using HTML & CSS
+- Used Git commands
+- Created GitHub repo and pushed the
