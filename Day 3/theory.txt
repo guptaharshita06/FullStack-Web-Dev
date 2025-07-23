@@ -1,0 +1,60 @@
+Day 3 Notes
+===============================
+
+Goal: Learn JavaScript basics and practice DOM manipulation.
+
+-----------------------------------------
+1. JavaScript Basics
+-----------------------------------------
+- Variables:
+  var, let, const are used to store values.
+
+- Data Types:
+  Number, String, Boolean, Array, Object, null, undefined
+
+- Conditionals:
+  if, else, ternary operator (? :)
+
+- Loops:
+  for, while – used for repeating code
+
+- Functions:
+  Normal: function greet() {}
+  Arrow: const greet = () => {}
+
+- Arrays:
+  Store multiple values → let arr = [1, 2, 3]
+
+- Objects:
+  Store key-value pairs → let person = {name: "Ali", age: 20}
+
+-----------------------------------------
+2. DOM Manipulation
+-----------------------------------------
+- DOM: HTML elements ka structure JS se access karna
+
+- Methods:
+  getElementById(), querySelector()
+
+- Event Handling:
+  button.addEventListener("click", function)
+
+- Task:
+  - Create input box, button, output paragraph
+  - On button click, show user's input below
+
+-----------------------------------------
+3. Git & GitHub
+-----------------------------------------
+- Steps:
+  git init
+  git add .
+  git commit -m "Day 3 - JS & DOM Practice"
+  git push
+
+-----------------------------------------
+✅ Summary:
+- JavaScript ke basics ache se samjhe
+- DOM elements ko JS se control kiya
+- Ek simple web app banaya
+- GitHub pr push kiya
