@@ -1,0 +1,21 @@
+Day 4 Notes
+===============================
+
+🟢 Goal:
+Complete all pending tasks, clean the code, and explore something new on your own.
+
+1️⃣ Completed Work:
+- Finished any incomplete tasks from Day 1, 2, and 3
+- Revisited confusing parts using YouTube and Google
+
+2️⃣ Polished Code:
+- Added comments to all HTML, CSS, and JavaScript files
+- Made GitHub repo clean and presentable
+- Organized folder structure properly
+
+3️⃣ Self-Exploration
+
+✅ Summary:
+- Acted like a real dev: searched, solved, explored
+- Code quality improved
+- New confidence in learning things inde
