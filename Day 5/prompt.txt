@@ -1,0 +1,53 @@
+You are a senior full-stack developer and project architect. Help me build a complete full-stack web application from scratch called "FixItNow".
+
+🧠 Project Idea:
+FixItNow is a local service finder platform where users can easily find, book, and rate local workers such as electricians, plumbers, AC repairmen, etc. It targets users in Tier-2 and Tier-3 cities who often struggle to find trusted service providers.
+
+🎯 Core Features (for MVP):
+- User authentication (signup/login)
+- Book a service (from a predefined list)
+- Worker profile with rating & status (available/busy)
+- Admin dashboard to manage users, workers & bookings
+- Booking history for users and workers
+
+📱 Users:
+- Regular users (book services)
+- Workers (register and get jobs)
+- Admin (full control)
+
+🛠 Tech Stack:
+- Frontend: React.js + Tailwind CSS
+- Backend: Node.js + Express.js
+- Database: MongoDB (MongoDB Atlas)
+- Auth: Firebase Auth or JWT-based auth
+- Payment: Razorpay (future scope)
+- Hosting: Vercel (frontend), Render (backend), MongoDB Atlas (DB)
+
+📦 Folder Structure:
+Organize code using industry-standard structure with `client/` for frontend and `server/` for backend.
+
+🗂 Requirements:
+- Write clean, modular, and commented code
+- Use .env files for sensitive configs
+- Add API routes for user, worker, and booking
+- Connect MongoDB to store users, bookings, services
+- Use proper error handling & validation
+- Create simple UI for all 3 roles (User, Worker, Admin)
+- Bonus: Responsive UI
+
+📄 Deliverables:
+- Full source code with clear folder structure
+- README.md with setup instructions
+- Sample .env template
+- MongoDB schema for users, workers, and bookings
+- API documentation (can be basic or Swagger)
+- Optional Postman collection for testing APIs
+
+📌 Start by generating:
+- Backend boilerplate with Express
+- React frontend setup
+- MongoDB schemas
+- Auth logic
+- Booking flow (basic MVP)
+
+You can ask me questions if anything is unclear.
