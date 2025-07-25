@@ -1,0 +1,88 @@
+DAY 6 – DEVELOPER PROFILE CARD PROJECT (DETAILED THEORY)
+
+🔸 TECHNOLOGIES USED:
+HTML → Structure
+CSS → Design and styling
+JavaScript → Interactivity using DOM manipulation
+
+----------------------------
+📁 FILE 1 – index.html
+----------------------------
+
+→ <html>, <head>, <body>: Basic structure of any webpage  
+→ <link rel="stylesheet">: Connects HTML to the CSS file  
+→ <div class="card">: Container for the whole profile card  
+→ <h1>: Shows the developer's name  
+→ <p class="info">: Short one-line bio or ambition  
+→ <ul class="tech-stack">: Unordered list of favorite technologies (HTML, CSS, JS etc.)  
+→ <button id="quoteBtn">: Button to show motivational quote and change background color  
+→ <p id="quote">: Placeholder to display the selected quote using JS  
+
+----------------------------
+📁 FILE 2 – style.css
+----------------------------
+
+→ body:
+   - display: flex → Aligns content in center
+   - justify-content & align-items: center → Vertically and horizontally centers the card
+   - background-color → Initial background color
+
+→ .card:
+   - max-width, padding, border-radius → Controls size and shape
+   - box-shadow → Adds shadow for a card effect
+   - transition → Smooth color/background change
+
+→ .tech-stack li:
+   - display: inline-block → Badges appear side by side
+   - padding, background-color, border-radius → Styled badge look
+
+→ button:
+   - cursor: pointer → Shows it's clickable
+   - hover effect → Slight styling change when mouse is over it
+
+----------------------------
+📁 FILE 3 – script.js
+----------------------------
+
+→ document.getElementById("quoteBtn"):
+   - Gets the button from HTML using its ID
+
+→ addEventListener("click", function):
+   - Listens for click event and runs code when button is clicked
+
+→ quotes[]:
+   - Array of motivational quotes (strings)
+
+→ colors[]:
+   - Array of background colors
+
+→ Math.floor(Math.random() * quotes.length):
+   - Randomly selects a number between 0 and last index of array
+   - Used to pick a random quote or color
+
+→ document.getElementById("quote").textContent:
+   - Sets the selected quote as the new text in the quote <p> tag
+
+→ document.body.style.backgroundColor:
+   - Changes the background color of the whole webpage
+
+----------------------------
+✨ EXTRA NOTES:
+
+1. getElementById():
+   - Used to grab a single HTML element using its unique ID
+
+2. querySelector():
+   - Similar to getElementById but more powerful, can use classes, tags, etc.
+
+3. addEventListener():
+   - Adds interactivity like clicks, hover, input change, etc.
+
+4. Arrays in JS:
+   - A way to store multiple values in a single variable
+
+5. Arrow Functions:
+   - Shorter way to write functions: () => {}
+
+6. Random Color/Quote:
+   - Useful way to show how JS can interact with both design (CSS) and content (HTML)
