@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f3f3;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+  transition: background-color 0.4s ease;
+}
+
+.tech-stack {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.tech-stack li {
+  display: inline-block;
+  background-color: #eee;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #cc0000;
+}
+
+#quote {
+  margin-top: 20px;
+  font-style: italic;
+  color: #333;
+}
