@@ -1,0 +1,84 @@
+📘 Theory for Day 7 – Mini User Directory Web App
+
+🛠 Project Purpose:
+This web app showcases a directory of users using HTML for structure, CSS for styling, and JavaScript for interactivity.
+Users can search and sort dynamically without refreshing the page.
+
+--------------------------------------------------
+
+📁 HTML (index.html):
+- <input id="searchInput">:
+  ➤ Used to take real-time input for searching users by name or branch.
+
+- <button onclick="sortByYear()">:
+  ➤ Triggers a JS function to sort users by their academic year when clicked.
+
+- <div id="userContainer">:
+  ➤ A container where all user cards will be displayed dynamically via JavaScript.
+
+--------------------------------------------------
+
+🎨 CSS (style.css):
+- body:
+  ➤ Basic styling for font, alignment, and padding.
+
+- #userContainer:
+  ➤ Uses flexbox to layout user cards in a responsive grid.
+
+- .user-card:
+  ➤ Styled box with border, padding, rounded corners, margin, and background.
+  ➤ Each card displays user info.
+
+--------------------------------------------------
+
+🧠 JavaScript (script.js):
+
+1. ✅ Array of Users:
+const users = [ ... ];
+➤ Each user object contains:
+   - name
+   - branch
+   - email
+   - year
+
+2. ✅ displayUsers(list):
+➤ Accepts an array of users.
+➤ Clears previous content from #userContainer.
+➤ Loops through each user using `forEach()`.
+➤ Dynamically creates a <div> for each user with class `user-card`.
+➤ Uses `innerHTML` to inject content into each card.
+➤ Appends the card to #userContainer using `appendChild()`.
+
+3. ✅ Search Function:
+document.getElementById("searchInput").addEventListener("input", function () { ... });
+➤ Adds a real-time input listener to the search bar.
+➤ Uses `.filter()` to check if user name or branch includes the search term.
+➤ Calls `displayUsers(filtered)` to update results on screen.
+
+4. ✅ Sort Function:
+function sortByYear() { ... }
+➤ Creates a shallow copy of the `users` array using spread operator.
+➤ Uses `.sort((a, b) => a.year - b.year)` to sort numerically.
+➤ Calls `displayUsers(sorted)` to re-render sorted users.
+
+5. ✅ Initial Render:
+displayUsers(users);
+➤ Called once on page load to show all users before any input/filtering.
+
+--------------------------------------------------
+
+📌 Learning Concepts Used:
+
+- JS Arrays (filter, sort, forEach)
+- DOM Methods (getElementById, createElement, innerHTML, appendChild)
+- Events (addEventListener for input)
+- Real-time Filtering & Sorting
+- Flexbox layout in CSS
+- Clean UI structuring
+
+--------------------------------------------------
+
+🧠 Why This Project is Important:
+➤ Reinforces practical DOM manipulation.
+➤ Shows how JavaScript can dynamically control HTML content.
+➤ Builds muscle memory for real-world input filtering, event handling, and UI logic.
