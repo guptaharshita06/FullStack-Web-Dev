@@ -1,0 +1,114 @@
+# Day 8 – Theory File (Registration Form + Validation + Password Strength Checker)
+
+----------------------------------------
+🧱 HTML STRUCTURE (index.html)
+----------------------------------------
+
+- <form id="registrationForm">:
+  - Main HTML tag used to collect input data.
+  - 'id' used to select the form in JavaScript.
+
+- <input> tags (Name, Email, Branch, Year, Password):
+  - Collect data from users.
+  - Each has 'id' and 'name' for JS access.
+  - 'required' ensures fields can't be empty.
+
+- <button type="submit">Submit</button>:
+  - Submits the form.
+  - JavaScript captures its event for validation.
+
+- <button type="reset">Reset</button>:
+  - Clears all fields in the form.
+
+- <p id="strength">:
+  - Displays live password strength result.
+
+- <script src="script.js">:
+  - Links the external JavaScript logic file.
+
+----------------------------------------
+🎨 CSS STYLING (style.css)
+----------------------------------------
+
+- display: flex / flex-direction:
+  - Used to center the form and organize layout.
+
+- input:focus:
+  - Highlights field when user clicks on it.
+
+- button:hover:
+  - Slight styling effect on hover to enhance UI.
+
+- #strength:
+  - Styles the password strength message below the password field.
+
+----------------------------------------
+🧠 JAVASCRIPT LOGIC (script.js)
+----------------------------------------
+
+🔹 1. FORM VALIDATION:
+----------------------------------------
+
+const form = document.getElementById("registrationForm");
+- Selects the form using its ID.
+
+form.addEventListener("submit", function(e) { ... });
+- Prevents the default form submission.
+- Checks validation manually using JS logic.
+
+Inside the function:
+- if condition checks:
+    - Name, email, branch, year, password are not empty.
+    - Email includes "@" using: `email.includes("@")`
+    - Password has at least 6 characters.
+
+- alert():
+    - Shows error or success message to the user.
+
+🔹 2. PASSWORD STRENGTH CHECKER:
+----------------------------------------
+
+const passwordInput = document.getElementById("password");
+- Selects the password input field.
+
+const strengthDisplay = document.getElementById("strength");
+- Paragraph element where strength result is shown.
+
+passwordInput.addEventListener("input", function() {
+  // Runs every time user types in the password field
+
+  const val = passwordInput.value;
+
+  REGEX CHECKS:
+  - /[A-Z]/.test(val) → contains uppercase?
+  - /[a-z]/.test(val) → contains lowercase?
+  - /[0-9]/.test(val) → contains digit?
+  - /[!@#\$%\^\&*\)\(+=._-]/.test(val) → contains special characters?
+  - val.length >= 6 → at least 6 characters?
+
+  STRENGTH LOGIC:
+  - Each matching condition adds +1 to 'strength'.
+  - 0–2: Weak, 3–4: Medium, 5: Strong
+
+  UI:
+  - Sets text in <p id="strength"> and changes its color (red/orange/green).
+});
+
+----------------------------------------
+📚 CONCEPTS USED
+----------------------------------------
+- HTML Forms
+- CSS Flexbox & Styling
+- JavaScript:
+    • DOM Manipulation
+    • Form Events
+    • Input Validation
+    • Regex (Regular Expressions)
+    • Password Strength Algorithm
+    • Event Listeners
+
+----------------------------------------
+🧪 BONUS FEATURES
+----------------------------------------
+- Reset button clears form.
+- Password strength checker shows result while typing.
