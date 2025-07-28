@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<!--Sbhi entries ko pehle Div m kr diya-->
+<body>
+    <div class="container">
+        <h2>Register Now</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" name="fullName" id="fullName" placeholder="Enter your full name" required />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="user@email.com" required />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <div class="phone-group">
+                    <select id="countryCode">
+                        <option value="+91">+91 IN</option>
+                        <option value="+1">+1 US</option>
+                        <option value="+92">+92 PK</option>
+                    </select>
+                    <input type="text" name="phone" id="phone" placeholder="82695xxxxx" required />
+                </div>
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" name="password" id="password" placeholder="Strong Password" required />
+                    <button type="button" id="togglePassword">See Me</button>
+                </div>
+                <div id="strengthMsg"></div>
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Re-enter password"
+                    required />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <select name="city" id="city" required>
+                    <option value="">Select City</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" id="otherCityInput" placeholder="Enter your city" style="display:none;" />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group checkbox">
+                <input type="checkbox" name="terms" id="terms" />
+                <label for="terms">I agree to the Terms and Conditions</label>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Register</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Pop up laane k liye-->
+     <!-- yeh kaam nhi kr rha h abhi-->
+    <div id="successPopup" class="popup">🎉 Registration Successful!</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
