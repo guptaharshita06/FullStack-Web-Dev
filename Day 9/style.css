@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff416c;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #ff416c;
+}
+
+.phone-group {
+    display: flex;
+    gap: 8px;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.error-message {
+    font-size: 13px;
+    color: red;
+    display: none;
+    margin-top: 4px;
+}
+
+input.success {
+    border-color: green;
+}
+
+input.error {
+    border-color: red;
+}
+
+.checkbox {
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+#strengthMsg {
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+button[type="submit"],
+button[type="reset"] {
+    background-color: #ff416c;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="reset"] {
+    background-color: #ccc;
+    color: #333;
+}
+
+/* Popup */
+.popup {
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: #00c851;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 3.4s ease;
+}
+
+.popup.show {
+    transform: translate(-50%, -50%) scale(1);
+    display: block;
+    opacity: 1;
+}
