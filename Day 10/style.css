@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #0d0d0d;
+  color: #ffd700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #1c1c1c;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #ffd70044;
+  width: 350px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ffd700;
+}
+
+.form-group {
+  margin-bottom: 1.3rem;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  background: #111;
+  border: 2px solid #333;
+  border-radius: 5px;
+  color: #ffd700;
+  outline: none;
+}
+
+input:focus {
+  border-color: #ffd700;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #e6c200;
+}
+
+#strength {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.strength-msg.weak {
+  color: #ff4d4d;
+}
+
+.strength-msg.medium {
+  color: #ffa500;
+}
+
+.strength-msg.strong {
+  color: #32cd32;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+}
+
+.suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 5px;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  top: 65px;
+  display: none;
+}
+
+.suggestions li {
+  padding: 8px;
+  cursor: pointer;
+  color: #ffd700;
+}
+
+.suggestions li:hover {
+  background: #ffd700;
+  color: #000;
+}
