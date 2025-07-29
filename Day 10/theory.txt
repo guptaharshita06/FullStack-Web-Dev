@@ -1,0 +1,93 @@
+---
+
+## 📚 `theory.txt` — *Full Explanation of Day 10 + Git + SweetAlert*
+
+```txt
+🧠 THEORY NOTES – DAY 10 (Login + Git + CLI + SweetAlert)
+
+==============================
+🔐 LOGIN FORM FUNCTIONALITY
+==============================
+✔ Email field with validation
+✔ Password field with strength checking
+✔ Password toggle (Show/Hide using JS)
+✔ SweetAlert used for success popups
+
+==============================
+💡 JavaScript Concepts Used
+==============================
+✔ DOM Manipulation (querySelector, addEventListener)
+✔ Regular Expressions (RegEx) for validation
+✔ Password strength based on length, symbols, digits
+✔ Dynamic class toggling for show/hide password
+✔ Event.preventDefault() to stop default form submit
+
+==============================
+🍬 SWEETALERT CDN (Popup)
+==============================
+CDN Used:
+https://cdn.jsdelivr.net/npm/sweetalert2@11
+
+Usage:
+Swal.fire({
+  title: "Success!",
+  text: "Login successful",
+  icon: "success",
+  confirmButtonText: "OK"
+});
+
+📌 SweetAlert provides modern-looking popups instead of default `alert()`.
+Customizable: Icons, Colors, Animations, Buttons, etc.
+
+==============================
+💻 CLI COMMANDS USED (TERMINAL)
+==============================
+
+📁 DIRECTORY COMMANDS
+-----------------------
+mkdir Day10
+cd Day10
+touch index.html style.css script.js
+
+🔧 GIT COMMANDS
+-----------------------
+git init                        // Initialize git project
+git status                     // See changes
+git add .                      // Add all files to staging
+git commit -m "message"        // Commit with message
+
+🌿 BRANCHING
+-----------------------
+git branch                     // See current branches
+git checkout -b newbranch      // Create + switch to branch
+git checkout main              // Switch back to main
+
+🔀 MERGING
+-----------------------
+git merge feature/login-ui     // Merge feature into main
+
+🚀 REMOTE SETUP
+-----------------------
+git remote add origin <url>    // Connect to GitHub
+git remote -v                  // Verify
+git push origin main           // Push code to GitHub
+
+⚠ ERROR HANDLING
+-----------------------
+git pull origin main --allow-unrelated-histories  // Merge remote into local
+// Resolve conflicts → add → commit → push
+
+==============================
+📌 Best Practices Followed
+==============================
+✔ Separate feature branch for development
+✔ Merge via terminal (no GUI used)
+✔ Conflicts resolved manually using VS Code
+✔ README + theory written clearly
+
+==============================
+✅ STATUS
+==============================
+Login Form — Completed
+Git Branch Flow — Completed
+Push to GitHub — Successful
