@@ -1,0 +1,172 @@
+📘 THEORY.txt – Day 11: Node.js + PostgreSQL CLI CRUD App
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧠 PROJECT KA OVERVIEW:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Is weekend project ka goal tha: 
+→ PostgreSQL database ko Node.js ke saath terminal (CLI) se connect karna 
+→ Basic CRUD operations karna: Add, View, Delete
+→ CLI menu banana using `prompt-sync`
+
+Yeh ek backend-focused project tha — koi HTML, CSS, frontend ka use nahi hua.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔌 POSTGRESQL SETUP:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+➤ PostgreSQL ek open-source relational DBMS hai. 
+➤ Install karne ke baad humne `psql` shell se kaam kiya.
+
+➤ Commands jo use hue:
+1. **DB create karna:**
+   CREATE DATABASE practice_db;
+
+2. **Table create karna:**
+   CREATE TABLE users (
+     id SERIAL PRIMARY KEY,
+     name VARCHAR(50),
+     email VARCHAR(100) UNIQUE,
+     age INT
+   );
+
+🧠 Note:
+- `SERIAL` se auto-increment hota hai.
+- `email` ko `UNIQUE` banaya, taaki same email baar baar insert na ho.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛠️ NODE.JS PROJECT SETUP:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+➤ Terminal me yeh command use ki:
+npm init -y
+
+➤ Dependencies install ki:
+npm install pg dotenv prompt-sync
+
+📦 Explanation:
+- `pg`: PostgreSQL driver for Node.js
+- `dotenv`: .env file ke through sensitive info hide karne ke liye
+- `prompt-sync`: User se terminal me input lene ke liye
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔐 ENVIRONMENT VARIABLES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Humne `.env` file banayi:
+DB_USER=postgres
+DB_HOST=localhost
+DB_NAME=practice_db
+DB_PASSWORD=yourpassword
+DB_PORT=5432
+
+→ Isse sensitive data (like password) secure raha, aur code clean dikha.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 PROJECT FILES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. **db.js**  
+   ➤ PostgreSQL connection handle karta hai.  
+   ➤ dotenv config use hua.  
+   ➤ `pool` object export kiya.
+
+2. **insertUser.js**  
+   ➤ CLI se name, email, age leta hai  
+   ➤ `INSERT INTO users` query run karta hai
+
+3. **fetchUsers.js**  
+   ➤ Saare users ko table format me dikhata hai using `console.table()`  
+   ➤ `SELECT * FROM users` run karta hai
+
+4. **deleteUser.js**  
+   ➤ User se ID ya email leta hai  
+   ➤ `DELETE FROM users WHERE id = $1 OR email = $2` query run hoti hai
+
+5. **menu.js**  
+   ➤ Yeh main CLI menu hai  
+   ➤ Prompt-sync se choice leta hai  
+   ➤ User ke input ke hisaab se correct module call hota hai
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧠 ASYNC / AWAIT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+➤ PostgreSQL se data lena ya bhejna asynchronous operation hota hai.
+
+➤ Humne har function me async/await use kiya:
+const result = await pool.query("SELECT * FROM users");
+
+→ Isse callback hell avoid hoti hai aur code readable hota hai.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧠 COMMON POSTGRESQL QUERIES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✔ INSERT  
+INSERT INTO users (name, email, age) VALUES ('Kunal', 'kunal@gmail.com', 21);
+
+✔ SELECT  
+SELECT * FROM users;
+
+✔ DELETE  
+DELETE FROM users WHERE id = 3;
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🖥️ GIT & GITHUB WORKFLOW (Recap):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+➤ Git init:
+git init
+
+➤ Create main & feature branch:
+git checkout -b feature/day11-cli-app
+
+➤ Add files:
+git add .
+git commit -m "Add insert, fetch, delete user CLI logic"
+
+➤ Merge:
+git checkout main
+git merge feature/day11-cli-app
+
+➤ Push to GitHub:
+git push origin main
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🍭 SWEETALERT CDN (From Day 10 Recap):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SweetAlert ek JavaScript library hai jo pretty alert boxes banata hai.
+
+➤ CDN include karte hain HTML ke head me:
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+➤ Use like this:
+Swal.fire({
+  title: 'Success!',
+  text: 'User registered successfully',
+  icon: 'success',
+  confirmButtonText: 'OK'
+});
+
+→ Isse hum JavaScript ke `alert()` ki jagah modern, styled popup dete hain.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ WHAT YOU LEARNED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Node.js se PostgreSQL ko connect kaise karte hain
+- Real-time CLI apps kaise bante hain
+- .env se DB credentials kaise hide karte hain
+- Async/await + queries ka use
+- Modular coding structure
+- Git branching & merging
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔥 NEXT STEP:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Issi app ka web version banana using Express.js (Day 12)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+END OF THEORY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"""
