@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - Student Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <form id="registerForm">
+    <h2>Register Student</h2>
+    <input type="text" name="name" placeholder="Full Name" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="password" placeholder="Password" required minlength="6" />
+    <label class="custom-checkbox">
+        <input type="checkbox" id="togglePassword" />
+        <span class="check-text">Show Password</span>
+    </label>
+
+
+    <input type="text" name="branch" placeholder="Branch" required />
+    <select name="year" required>
+      <option value="">Select Year</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+    </select>
+    <button type="submit">Register</button>
+    <p>Already registered? <a href="login.html">Login here</a></p>
+  </form>
+
+  <!-- SweetAlert2 -->
+  <script src="sweetalert2.all.min.js"></script>
+
+  <!-- Register JS -->
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        password: form.password.value,
+        branch: form.branch.value,
+        year: parseInt(form.year.value),
+      };
+
+      try {
+        const res = await fetch("http://localhost:5000/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          Swal.fire("Success!", result.message, "success").then(() => {
+            window.location.href = "login.html";
+          });
+        } else {
+          Swal.fire("Error", result.message || "Registration failed", "error");
+        }
+      } catch (err) {
+        console.error(err);
+        Swal.fire("Error", "Server not responding.", "error");
+      }
+    });
+  </script>
+
+  <script>
+    const toggle = document.getElementById("togglePassword");
+    const pwdField = document.querySelector('input[name="password"]');
+
+    toggle.addEventListener("change", () => {
+      pwdField.type = toggle.checked ? "text" : "password";
+    });
+  </script>
+
+</body>
+
+</html>
