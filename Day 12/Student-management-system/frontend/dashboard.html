@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Student Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2 style="text-align:center;">Student Dashboard</h2>
+  <div class="dashboard-container" id="studentsContainer"></div>
+
+  <!-- SweetAlert2 -->
+  <script src="sweetalert2.all.min.js"></script>
+
+  <script>
+    async function fetchStudents() {
+      try {
+        const res = await fetch("http://localhost:5000/api/students");
+
+        if (!res.ok) throw new Error("Unable to fetch");
+
+        const students = await res.json();
+        const container = document.getElementById("studentsContainer");
+
+        if (!students.length) {
+          Swal.fire("No Students", "No student data found.", "info");
+          return;
+        }
+
+        container.innerHTML = "";
+        students.forEach((s) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <h3>${s.name}</h3>
+            <p><b>Email:</b> ${s.email}</p>
+            <p><b>Branch:</b> ${s.branch}</p>
+            <p><b>Year:</b> ${s.year}</p>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        console.error(err);
+        Swal.fire("Error", "Could not load students!", "error");
+      }
+    }
+
+    fetchStudents();
+  </script>
+</body>
+</html>
