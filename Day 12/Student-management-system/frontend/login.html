@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Student Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Place this above your <form> in login.html -->
+  <div id="quickFillTrigger" style="text-align:right; margin-bottom:12px;">
+    <span id="quickFillBtn" style="
+      color:#20e3d9;
+      background:rgba(30,34,48,0.85);
+      padding:5px 13px;
+      border-radius:7px;
+      font-size:14px;
+      cursor:pointer;
+      transition:background 0.18s;
+      box-shadow:0 0 7px #15e3fd66;
+    ">🔑 Show Quick Fill</span>
+  </div>
+
+  <form id="loginForm">
+    <h2>Student Login</h2>
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="password" placeholder="Password" required minlength="6" />
+    <label class="custom-checkbox">
+        <input type="checkbox" id="togglePassword" />
+        <span class="check-text">Show Password</span>
+    </label>
+
+
+    <label class="custom-checkbox">
+        <input type="checkbox" id="rememberMe" />
+        <span class="check-text">Remember Me</span>
+    </label>
+
+
+    <button type="submit">Login</button>
+    <p>Not registered? <a href="register.html">Register now</a></p>
+  </form>
+
+  <!-- SweetAlert2 -->
+  <script src="sweetalert2.all.min.js"></script>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = {
+        email: form.email.value,
+        password: form.password.value,
+      };
+
+      try {
+        const res = await fetch("http://localhost:5000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          Swal.fire("Login Successful", "Redirecting to dashboard...", "success").then(() => {
+            window.location.href = "dashboard.html";
+          });
+        } else {
+          Swal.fire("Error", result.message || "Login failed", "error");
+        }
+      } catch (err) {
+        console.error(err);
+        Swal.fire("Error", "Something went wrong", "error");
+      }
+    });
+  </script>
+
+  <script>
+    const toggle = document.getElementById("togglePassword");
+    const pwdField = document.querySelector('input[name="password"]');
+
+    toggle.addEventListener("change", () => {
+      pwdField.type = toggle.checked ? "text" : "password";
+    });
+  </script>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const emailInput = form.email;
+    const passwordInput = form.password;
+    const rememberInput = document.getElementById("rememberMe");
+
+    // 👇 On page load, pre-fill if data exists
+    window.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("rememberMe") === "true") {
+        emailInput.value = localStorage.getItem("email") || "";
+        passwordInput.value = localStorage.getItem("password") || "";
+        rememberInput.checked = true;
+      }
+    });
+
+    // 👇 On login form submit
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = {
+        email: emailInput.value,
+        password: passwordInput.value,
+      };
+
+      // 🔐 Save in localStorage
+      if (rememberInput.checked) {
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("password", data.password);
+        localStorage.setItem("rememberMe", "true");
+      } else {
+        localStorage.clear();
+      }
+
+      try {
+        const res = await fetch("http://localhost:5000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          Swal.fire("Success!", "Login successful", "success").then(() => {
+            window.location.href = "dashboard.html";
+          });
+        } else {
+          Swal.fire("Error", result.message || "Login failed", "error");
+        }
+      } catch (err) {
+        Swal.fire("Error", "Server error", "error");
+      }
+    });
+  </script>
+
+  <script>
+    // Dummy value: Change to last or demo user if needed
+    const demoEmail = "kunalbairwa2580@gmail.com";
+    const demoPassword = "Kunal1234";
+
+    const quickFillBtn = document.getElementById("quickFillBtn");
+    const loginForm = document.getElementById("loginForm");
+
+    // Show tooltip on hover (optional)
+    quickFillBtn.addEventListener("mouseover", function () {
+      quickFillBtn.textContent = "▶️ Autofilling...";
+      emailInput.value = demoEmail;
+      passwordInput.value = demoPassword;
+    });
+    quickFillBtn.addEventListener("mouseout", function () {
+      quickFillBtn.textContent = "🔑 Show Quick Fill";
+    });
+
+    // Hide quickfill on successful login (redirect)
+    loginForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      // ...rest of your login fetch logic...
+      // Example (assuming login API and sweetalert):
+      try {
+        const res = await fetch("http://localhost:5000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: emailInput.value,
+            password: passwordInput.value,
+          }),
+        });
+        const result = await res.json();
+
+        if (res.ok) {
+          // Hide quickFill bar just before redirect
+          document.getElementById('quickFillTrigger').style.display = 'none';
+          Swal.fire("Success!", "Login successful", "success").then(() => {
+            window.location.href = "dashboard.html";
+          });
+        } else {
+          Swal.fire("Error", result.message || "Login failed", "error");
+        }
+      } catch (err) {
+        Swal.fire("Error", "Server error", "error");
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>
