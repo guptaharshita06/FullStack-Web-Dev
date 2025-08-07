@@ -1,0 +1,207 @@
+html, body {
+  background: #101014;
+  color: #fafbfc;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  min-height: 100vh;
+  letter-spacing: 0.03em;
+}
+
+form {
+  max-width: 370px;
+  margin: 40px auto;
+  padding: 30px 28px 22px 28px;
+  background: #181826;
+  border-radius: 16px;
+  box-shadow: 0 6px 36px #13e6ff33, 0 1.5px 4px #0005;
+  border: 2px solid #24243b;
+  position: relative;
+  z-index: 2;
+  transition: box-shadow 0.3s;
+}
+
+form:hover, form:focus-within {
+  box-shadow: 0 0 32px 2px #3ffaff77, 0 8px 22px #0007;
+}
+
+h2 {
+  text-align: center;
+  color: #3fe0fd;
+  letter-spacing: .08em;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 3px #222b;
+}
+
+input, select {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0 22px 0;
+  border: 1.6px solid #24243e;
+  background: #171a24;
+  color: #f0faff;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.26s, box-shadow 0.18s;
+  box-shadow: 0 0 0 0px #17f3ff6e;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #3dd9ff;
+  box-shadow: 0 0 0 2.5px #12c6fc99;
+  background: #181a28;
+}
+
+label {
+  color: #c4f1fb;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  margin-bottom: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 13px 0;
+  font-size: 17px;
+  letter-spacing: 0.09em;
+  background: linear-gradient(90deg,#15c0fb 0%, #09a7ec 50%, #6827de 100%);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1.6px 14px #12bee8cc;
+  outline: none;
+  transition: background 0.35s, box-shadow 0.28s, transform 0.22s;
+}
+button:hover, button:focus {
+  background: linear-gradient(90deg, #14bec1 0%, #3bb5fc 62%, #0be9c4 95%);
+  box-shadow: 0 0 14px 4px #1beef980, 0 2.5px 12px #1f034899;
+  transform: scale(1.04);
+}
+
+a {
+  color: #0be9ea;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #6d9afd;
+  text-shadow: 0 1px 10px #3ad7fa99;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  padding: 28px 0 8px 0;
+}
+
+.card {
+  background: #1a1a28f1;
+  border-radius: 12px;
+  box-shadow: 0 6px 28px #302779b9, 0 0 0 2.5px #117afea0 inset;
+  padding: 20px 20px 16px 20px;
+  min-width: 240px;
+  max-width: 270px;
+  border: 1.2px solid #30304a;
+  transition: transform .22s, box-shadow .33s;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-5px) scale(1.05) rotate(-1.2deg);
+  box-shadow: 0 4px 40px 4px #0ce4ebaf, 0 3px 24px #5c3ff5d9;
+  border-color: #0be9c4;
+}
+.card h3 {
+  color: #42e9fc;
+  margin-bottom: 8px;
+  font-size: 1.22em;
+}
+.card p {
+  margin: 6px 0 2px 0;
+  color: #fafbfe;
+  letter-spacing: .01em;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #121223;
+}
+::-webkit-scrollbar-thumb {
+  background: #11abb9;
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  accent-color: #27d2ff;
+}
+#quickFillBtn {
+  box-shadow:0 0px 10px #15e3fd33;
+  transition: box-shadow 0.20s, background 0.24s;
+}
+#quickFillBtn:hover {
+  box-shadow:0 0px 30px #2ffbbaa4, 0 2px 8px #09c8e777;
+  background: #212a3d;
+  color:#42ffc0;
+}
+/* ----- Checkbox Styling for Show Password & Remember Me ----- */
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 20px;
+  color: #cbf2ff;
+  font-size: 14px;
+  font-weight: 500;
+  user-select: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #3cefff;
+  border-radius: 4px;
+  background: transparent;
+  position: relative;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.custom-checkbox input[type="checkbox"]:checked {
+  background-color: #1eeef6;
+  border-color: #1eeef6;
+  box-shadow: 0 0 8px #27f5ff99;
+}
+
+.custom-checkbox input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  color: #121222;
+  font-size: 13px;
+  left: 3.6px;
+  top: -0.5px;
+  pointer-events: none;
+}
+
+.custom-checkbox:hover {
+  color: #51f9ff;
+}
+
+.custom-checkbox input[type="checkbox"]:hover {
+  box-shadow: 0 0 5px #45eafc88;
+}
+
+.check-text {
+  margin-top: 1px;
+  transition: 0.2s ease;
+}
+
+.custom-checkbox input[type="checkbox"]{
+transition: box-shadow 0.3s, background-color 0.25s ease;    
+}
