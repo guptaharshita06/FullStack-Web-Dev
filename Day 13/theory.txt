@@ -1,0 +1,147 @@
+📘 Day 13 - Backend with Node.js, Express & PostgreSQL | API Testing using Postman
+
+------------------------------------------------------
+🔸 PART 1: What is Node.js?
+------------------------------------------------------
+Node.js ek runtime environment hai jisme JavaScript ko browser ke bahar run kar sakte hain.
+
+- Asynchronous & non-blocking I/O
+- Single-threaded but fast for I/O tasks
+- Ideal for building APIs and servers
+
+⚙️ Basic Commands:
+- `node filename.js` — File run karne ke liye
+- `npm init -y` — Node project initialize karna
+- `npm install package-name` — Package install karna
+
+------------------------------------------------------
+🔸 PART 2: What is Express.js?
+------------------------------------------------------
+Express ek lightweight Node.js framework hai jo APIs banane ke liye use hota hai.
+
+⚙️ Basic Usage:
+```js
+const express = require("express");
+const app = express();
+app.use(express.json());
+```
+
+✅ Features:
+- Routing (GET, POST, PUT, DELETE)
+- Middleware support
+- Fast API development
+
+------------------------------------------------------
+🔸 PART 3: PostgreSQL Overview
+------------------------------------------------------
+PostgreSQL ek open-source RDBMS (Relational Database) hai.
+
+🧱 Concepts:
+- Table — Data store karne ke liye
+- Rows — Records
+- Columns — Fields like `name`, `email`
+
+⚙️ CLI Commands:
+- `psql -U postgres` — Login to DB
+- `\l` — List all databases
+- `\c dbname` — Connect to a DB
+- `\dt` — Show tables
+- `SELECT * FROM table;` — View data
+
+------------------------------------------------------
+🔸 PART 4: Connecting Node.js to PostgreSQL
+------------------------------------------------------
+Use `pg` package for PostgreSQL connectivity:
+
+1. Install:
+```bash
+npm install pg dotenv
+```
+
+2. Create `.env`:
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=yourpassword
+DB_NAME=yourdbname
+```
+
+3. `db.js`:
+```js
+const { Pool } = require("pg");
+require("dotenv").config();
+
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
+
+module.exports = pool;
+```
+
+------------------------------------------------------
+🔸 PART 5: Using Postman to Test APIs
+------------------------------------------------------
+
+✅ Steps:
+1. Open Postman
+2. Select method: `POST` or `GET`
+3. For `POST`, choose **Body → raw → JSON**
+4. Use `http://localhost:3000/students`
+5. Hit **Send**
+
+📩 JSON Body:
+```json
+{
+  "name": "Kunal",
+  "email": "kunal@example.com",
+  "course": "MERN"
+}
+```
+
+------------------------------------------------------
+🔸 PART 6: Final Server Code Snippets
+------------------------------------------------------
+
+▶️ `index.js`:
+```js
+const express = require("express");
+const pool = require("./db");
+require("dotenv").config();
+
+const app = express();
+app.use(express.json());
+
+// POST: Add Student
+app.post("/students", async (req, res) => {
+  const { name, email, course } = req.body;
+  await pool.query("INSERT INTO students (name, email, course) VALUES ($1, $2, $3)", [name, email, course]);
+  res.json({ message: "Student added successfully!" });
+});
+
+// GET: Fetch All Students
+app.get("/students", async (req, res) => {
+  const result = await pool.query("SELECT * FROM students");
+  res.json(result.rows);
+});
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
+```
+
+📝 Notes:
+- `pool.query` is async, always use `await`
+- Wrap in `try...catch` for better error handling (recommended)
+
+------------------------------------------------------
+✅ Summary
+------------------------------------------------------
+- Node.js + Express + PostgreSQL combo is powerful for APIs
+- Postman makes testing simple
+- Environment variables keep DB credentials secure
+- Use async/await for DB calls
