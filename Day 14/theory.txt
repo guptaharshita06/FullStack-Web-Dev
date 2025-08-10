@@ -1,0 +1,114 @@
+🧱 BACKEND SETUP (Node.js + Express + PostgreSQL)
+✅ 1. PostgreSQL Kya Hai?
+PostgreSQL ek open-source relational database hai jo SQL commands use karta hai data store aur manage karne ke liye. Isme tables, columns, rows ka concept hota hai jaise Excel me cells.
+
+✅ 2. Database Table Structure:
+humne students naam ki table banayi jisme:
+
+id (auto-incremented primary key)
+
+name
+
+email (unique hona chahiye)
+
+course
+
+SQL file:
+CREATE TABLE students (
+id SERIAL PRIMARY KEY,
+name TEXT NOT NULL,
+email TEXT UNIQUE NOT NULL,
+course TEXT NOT NULL
+);
+
+✅ 3. .env file:
+Sensitive data (like username, password) ko .env me store karte hain taaki code clean aur secure rahe.
+
+.env:
+PG_USER=postgres
+PG_HOST=localhost
+PG_DATABASE=studentapp_db
+PG_PASSWORD=your_password
+PG_PORT=5432
+
+✅ 4. db.js:
+Ye file PostgreSQL se connection banata hai using pg package ka Pool object.
+
+Example:
+const { Pool } = require('pg');
+const pool = new Pool({...process.env});
+module.exports = pool;
+
+✅ 5. Express Server:
+Express ek lightweight Node.js framework hai jo REST API banana easy banata hai.
+
+GET /students → sabhi students fetch karne ke liye
+POST /students → naya student add karne ke liye
+
+🎨 FRONTEND SETUP (HTML + CSS + JavaScript)
+✅ 6. index.html:
+Isme ek form hota hai jisme user input deta hai (name, email, course), aur ek table hoti hai jisme DB se aaye students show karte hain.
+
+✅ 7. style.css:
+Form aur table ko responsive aur attractive banane ke liye CSS likha gaya hai (grid, padding, hover effects, etc.)
+
+✅ 8. script.js:
+Is file me Fetch API ka use kiya gaya hai backend se data bhejne aur lene ke liye.
+
+📌 Important Functions:
+
+fetchStudents(): backend se GET request bhejkar students table update karta hai
+
+form.addEventListener('submit'): user jab Add Student karta hai, POST request ke through backend me data jaata hai
+
+✅ 9. SweetAlert:
+Form submit hone ke baad SweetAlert ka popup show hota hai:
+
+Success ke liye green ✅ alert
+
+Error ke liye red ❌ alert
+
+Example:
+Swal.fire({
+icon: 'success',
+title: 'Student Added',
+text: 'Student has been successfully added!'
+});
+
+🧪 BACKEND TESTING (Postman se)
+POSTMAN ek API testing tool hai jisse GET/POST requests manually bheji ja sakti hain.
+
+Test 1:
+POST http://localhost:5000/students
+Body:
+{
+"name": "Kunal",
+"email": "kunal@example.com",
+"course": "AI & DS"
+}
+
+Test 2:
+GET http://localhost:5000/students
+Returns array of students in JSON.
+
+🔁 FETCH API (Browser JS)
+Fetch API modern JavaScript ka part hai jisse HTTP requests bheji ja sakti hain without refreshing the page.
+
+Syntax:
+fetch('http://localhost:5000/students', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ name, email, course })
+})
+
+✅ FINAL FLOW:
+
+User form fill karta hai → submit karta hai
+
+JS Fetch API se POST request jata hai backend ko
+
+Backend data DB me insert karta hai
+
+JS me SweetAlert popup dikhta hai
+
+fetchStudents() dobara call hota hai → table update hoti hai
