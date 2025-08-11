@@ -1,0 +1,103 @@
+## 📘 `theory.txt`
+
+```txt
+📘 THEORY – JWT Authentication in Node.js + PostgreSQL
+
+===============================
+1. What is JWT?
+===============================
+JWT (JSON Web Token) is a compact, secure way to transmit user identity data between client and server.
+It contains three parts:
+- Header (algo + token type)
+- Payload (user data)
+- Signature (generated with secret key)
+
+JWT is **stateless** and is stored client-side (usually in localStorage or cookies).
+
+===============================
+2. Project Flow
+===============================
+🟢 REGISTER (POST /register)
+- Get name, email, password from user.
+- Hash password using bcrypt.
+- Store user in PostgreSQL.
+
+🟢 LOGIN (POST /login)
+- Compare hashed password using bcrypt.compare()
+- If valid, create JWT with `jwt.sign()`
+- Send token to client.
+
+🟢 PROTECTED ROUTE (GET /profile)
+- Use middleware to check token.
+- Get token from `Authorization: Bearer <token>` header.
+- If valid → allow, else → return 401 Unauthorized.
+
+===============================
+3. Packages Used
+===============================
+- express → Web server
+- pg → PostgreSQL client
+- bcrypt → Password hashing
+- jsonwebtoken → JWT generation and verification
+- dotenv → Load secret values from `.env`
+
+===============================
+4. PostgreSQL Setup
+===============================
+1. Install PostgreSQL
+2. Create DB:
+   CREATE DATABASE day15_auth;
+
+3. Create table:
+   CREATE TABLE users (
+     id SERIAL PRIMARY KEY,
+     name VARCHAR(100),
+     email VARCHAR(100) UNIQUE,
+     password TEXT
+   );
+
+4. .env file example:
+   PORT=5000
+   DATABASE_URL=postgresql://postgres:your_password@localhost:5432/day15_auth
+   JWT_SECRET=secret123@jwt
+
+===============================
+5. Bcrypt (Password Hashing)
+===============================
+- bcrypt.hash(password, saltRounds) → Hash the password.
+- bcrypt.compare(password, hashedPassword) → Compare during login.
+
+===============================
+6. JWT Functions
+===============================
+- jwt.sign(payload, secret, options) → generate token
+- jwt.verify(token, secret) → validate token
+
+Example:
+```js
+const token = jwt.sign({ id: user.id, name: user.name }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+   if (err) return res.status(401).send("Invalid Token");
+});
+
+Middleware to Validate Token
+const authHeader = req.headers['authorization'];
+const token = authHeader && authHeader.split(' ')[1]; // Get only token part
+
+if (!token) return res.status(403).json({ error: 'Token missing' });
+
+jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+  if (err) return res.status(401).json({ error: 'Invalid Token' });
+  req.user = decoded;
+  next();
+});
+
+Security Tips
+Never store passwords in plain text.
+
+Never expose JWT secret.
+
+Always use hashed passwords.
+
+Always validate input data.
